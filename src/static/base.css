@@ -1,0 +1,40 @@
+body {
+    background-color: #fbfbfb;
+}
+
+@media (min-width: 991.98px) {
+    main {
+        padding-left: 240px;
+    }
+}
+
+
+.offcanvas-body a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.offcanvas-menu {
+    padding: 20px;
+    height: 1000px;
+    width: 250px;
+}
+
+.offcanvas-menu-items {
+    height: 30px;
+    width: 200px;
+}
+
+.offcanvas-menu a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 0;
+}
+
+/* Highlight the selected item */
+.offcanvas-menu a.active {
+    background-color: #f8f9fa;
+}
