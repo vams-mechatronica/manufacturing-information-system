@@ -19,6 +19,8 @@ from django.urls import path,include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from django.conf import settings
+from django.conf.urls.static import static
 
 ...
 
@@ -38,7 +40,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('master/',include('Suppliers.urls')),
     path('master/',include('Shop.urls')),
+    path('main/',include('home.urls')),
     path('mis/',include('Equipment.urls')),
     path('ps/',include('preventive_maintenance.urls')),
     path('', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

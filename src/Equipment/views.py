@@ -38,5 +38,7 @@ class EquipmentSpareView(generics.ListCreateAPIView):
         serializer = EquipmentSpareSerializer(queryset, many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
 
-def home(request):
-    return render(request,'base.html')
+def equipments_view(request):
+    equipments = Equipment.objects.all()
+    context = {'equipments':equipments}
+    return render(request, 'equipments.html', context)

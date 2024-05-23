@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #3498db;
+    --font-family:Arial,
+        Helvetica,
+        sans-serif;
+    --font-size-medium: 16px;
+    --border-radius: 8px;
+    --color-not-ready: rgb(212, 25, 25);
+    --color-delay: rgba(120, 119, 119, 0.98);
+    --color-not-in-use: rgb(75, 74, 74);
+    --color-ok-not-productive: rgb(232, 225, 2);
+    --color-productive: rgb(168, 227, 104);
+    --color-productive-100: rgb(0, 100, 0);
+    --navbar-top:rgb(0, 164, 0);
+    --navbar-middle:rgb(38, 38, 38);
+    --navbar-bottom:rgb(105, 105, 105);
+    --container-common-top: 150px;
+    --border-box: 0.5px solid rgb(105, 105, 105);
+    --button-bg-color: rgb(190, 190, 190);
+    --button-color: rgb(0, 0, 0);
+}
+

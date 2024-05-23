@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        {% comment %} <h4 class="h4-subheader" style="color: black; width: 90%; margin: 1rem 1rem;">Menu</h4> {% endcomment %}
+        <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i>
+    </div>
+    <div class="container-main">
+        <div class="box" id="box-1" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "master" %}" style="text-decoration:none;">Master</a>
+        </div>
+        <div class="box" id="box-2" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "maintenance" %}" style="text-decoration:none;">Maintenance</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "amc" %}" style="text-decoration:none;">Annual Maintenance Contract</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Issued HSD-oil</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Spare Cell Data</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "reports" %}" style="text-decoration:none;">Reports</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Change Switchboard Items</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock body %}

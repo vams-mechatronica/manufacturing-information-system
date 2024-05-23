@@ -10,7 +10,7 @@ from django_quill.fields import QuillField
 
 # Create your models here.
 class Equipment(models.Model):
-    number = models.IntegerField(_("Equipemnt Number"),primary_key=True)
+    number = models.IntegerField(_("Equipemnt Number"))
     description = models.CharField(_("Description"), max_length=350)
     short_name = models.CharField(_("Short Name"), max_length=250,null=True, blank=True)
     shop_number = models.ForeignKey(Shop, verbose_name=_("Shop Number"), on_delete=models.CASCADE)
@@ -18,7 +18,7 @@ class Equipment(models.Model):
     column = models.CharField(_("Column"), max_length=50,null=True, blank=True)
     section = models.CharField(_("Section"), max_length=50,null=True, blank=True)
     section_eln = models.CharField(_("Section ELN"), max_length=50,null=True, blank=True)
-    equipment_type = models.CharField(_("Equipment Type"), max_length=50,null=True, blank=True)
+    equipment_type = models.CharField(_("Equipment Type"), max_length=50,null=True, blank=True,choices=(('A','A'), ('B','B'), ('C','C'), ('D','D'),('E','E'),('F','F')))
     sr_number = models.CharField(_("M/C Sr. No. Alloted by Mfg."), max_length=50,null=True, blank=True)
     model_number = models.CharField(_("M/C Model Number"), max_length=50,null=True, blank=True)
     manufacturer_code = models.ForeignKey(Manufacturer, verbose_name=_("Manufacturer Code"), on_delete=models.CASCADE,null=True, blank=True)
@@ -29,6 +29,8 @@ class Equipment(models.Model):
     cost_in_lakhs = models.CharField(_("Cost in Lakhs"), max_length=50,null=True, blank=True)
     po_number = models.CharField(_("PO Number"), max_length=50,null=True, blank=True)
     po_date = models.DateField(_("PO Date"), auto_now=False, auto_now_add=False,null=True, blank=True)
+    received_date = models.DateField(_("received date"), auto_now=False, auto_now_add=False)
+    date_of_commissioning = models.DateField(_("Date of Commossioning"), auto_now=False, auto_now_add=False)
     ptc_issue_date = models.DateField(_("PTC Issue Date"), auto_now=False, auto_now_add=False,null=True, blank=True)
     warranty = models.CharField(_("Warranty(from the date of commissioning and proving out of MnP)"), max_length=50,null=True, blank=True)
     amc_covered_in_po = models.BooleanField(_("AMC covered in PO"),null=True, blank=True)

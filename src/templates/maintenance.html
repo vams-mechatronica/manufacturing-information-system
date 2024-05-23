@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Master{% endblock title %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        {% comment %} <h4 class="h4-subheader" style="color: black; width: 90%; margin: 1rem 1rem;">Menu</h4> {% endcomment %}
+        <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i>
+    </div>
+    <div class="container-main">
+        <div class="box" id="box-1" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">PM Scheduling</a>
+        </div>
+        <div class="box" id="box-2" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Daily Break Down Position</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Machine Working With Partial Disability</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Edit Month Wise Availability</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Edit Year Wise Availability</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Daily GM Position</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="#" style="text-decoration:none;">Break Down History</a>
+        </div>
+        <div class="box" id="box-3" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "home" %}" style="text-decoration:none;">Return to Main Switchboard</a>
+        </div>
+    </div>
+</div>
+{% endblock body %}

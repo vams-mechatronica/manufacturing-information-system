@@ -1,0 +1,175 @@
+@import url('constants.css');
+
+.box {
+    margin: 1rem 1rem;
+    display: inline-block;
+    border: var(--border-box);
+    padding: 10px;
+    width: calc(25% - 2rem);
+    height: 22.5rem;
+}
+
+/* Add media query for responsiveness */
+@media (max-width: 768px) {
+    .box {
+        width: calc(100% - 2rem);
+        padding: 10px;
+        height: 47.5rem;
+    }
+}
+
+.status-bar ul li {
+    margin: 0.2rem;
+}
+
+.square-box {
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: rgb(105, 105, 105);
+    margin: 0.1rem;
+}
+
+.lower .col {
+    margin: 1.5rem 0.5rem 1.5rem 0.5rem;
+}
+
+.lower ul li {
+    list-style: none;
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color:var(--button-color);
+    border: none;
+    display: flex;
+    margin: 2rem auto;
+    padding: .4rem 2rem;
+}
+
+.box table {
+    margin: auto;
+    text-align: center;
+}
+
+td {
+    padding: 0 1rem 0 1rem;
+    text-align: justify;
+}
+
+.machine-name {
+    position: relative;
+    top: -4rem;
+    left: 2.5rem;
+    font-weight: bold;
+}
+.container-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    white-space: nowrap;
+    padding: 0px 20px;
+}
+.nav1 {
+    background-color: var(--navbar-top);
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav2 {
+    background-color: var(--navbar-middle);
+    display: flex;
+    position: fixed;
+    top: 50px;
+    z-index: 1000;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav3 {
+    background-color: var(--navbar-bottom);
+    display: flex;
+    position: fixed;
+    top: 113px;
+    z-index: 1000;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.h3-nav {
+    color: white;
+    margin: 10px 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.left2 span {
+    color: white;
+    font-size: .8rem;
+}
+
+.left2 div {
+    width: 7rem;
+    margin: .2rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.right2 {
+    float: right;
+}
+
+.right2 div {
+    width: 6rem;
+    margin: .2rem;
+    padding: 0.5rem;
+    text-align: center;
+
+}
+
+.right2 span {
+    color: white;
+    font-size: 0.8vw;
+}
+
+.left3 a {
+    margin-top: 1rem;
+}
+
+.left3 a span {
+    color: white;
+    padding: 1rem 1.2rem;
+    margin: 0.4rem 0.4rem 0.4rem 0;
+    border-right: 1px solid white;
+    position: relative;
+
+}
+
+.right3 span {
+    color: white;
+    padding: 0.5rem;
+    margin: .4rem;
+}
+
+.h4-subheader {
+    font-size: large;
+    font-weight: bold;
+}
+
+.h5-subheader {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.container-common {
+    margin-top: var(--container-common-top);
+}
+
+.title {
+    display: flex;
+    padding: 20px;
+}
