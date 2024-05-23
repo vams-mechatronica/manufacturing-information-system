@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Shop',
     'Manufacturer',
     'Equipment',
+    'preventive_maintenance',
     'django_quill',
     'django_filters',
     'rest_framework',

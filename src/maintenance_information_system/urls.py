@@ -39,5 +39,6 @@ urlpatterns = [
     path('master/',include('Suppliers.urls')),
     path('master/',include('Shop.urls')),
     path('mis/',include('Equipment.urls')),
+    path('ps/',include('preventive_maintenance.urls')),
     path('', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
