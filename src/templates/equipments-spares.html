@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Master{% endblock title %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">Equipment Spares</h4>
+        {% comment %} <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i> {% endcomment %}
+    </div>
+    <div class="container-main">
+<table id="equipment-spares-list" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>Machine Number</th>
+            <th>PL No.</th>
+            <th>Description</th>
+            <th>Part No.</th>
+            <th>Category</th>
+            <th>SPD</th>
+            <th>Quantity</th>
+            <th>Currency</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+            <th>Ledger No.</th>
+            <th>Remarks</th>
+            {% if request.user.is_superuser %}<th>Action</th>{% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for eqp in spares %}
+        <tr>
+            <td>{{eqp.id}}</td>
+            <td>{{eqp.machine_number}}</td>
+            <td>{{eqp.part_list_number}}</td>
+            <td>{{eqp.description}}</td>
+            <td>{{eqp.part_number}}</td>
+            <td>{{eqp.category}}</td>
+            <td>{{eqp.sp_d}}</td>
+            <td>{{eqp.quantity}}</td>
+            <td>{{eqp.currency}}</td>
+            <td>{{eqp.unit_price}}</td>
+            <td>{{eqp.total_price}}</td>
+            <td>{{eqp.ledger_number}}</td>
+            <td>{{eqp.remarks}}</td>
+            {% if request.user.is_superuser %}
+            <td>
+                <a href="/update/{{eqp.id}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</button>
+                <a href="/delete/{{eqp.id}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#equipment-spares-list').DataTable();
+} );
+</script>
+{% endblock body %}
+

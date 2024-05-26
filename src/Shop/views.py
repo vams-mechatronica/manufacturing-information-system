@@ -37,3 +37,9 @@ class FIRcodeView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = FIRcodeSerializer(queryset, many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
+    
+
+def fir_page(request):
+    queryset = FIRcode.objects.all()
+    context = {'firs':queryset}
+    return render(request, 'fir_codes.html', context=context)

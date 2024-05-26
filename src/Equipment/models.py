@@ -18,7 +18,7 @@ class Equipment(models.Model):
     column = models.CharField(_("Column"), max_length=50,null=True, blank=True)
     section = models.CharField(_("Section"), max_length=50,null=True, blank=True)
     section_eln = models.CharField(_("Section ELN"), max_length=50,null=True, blank=True)
-    equipment_type = models.CharField(_("Equipment Type"), max_length=50,null=True, blank=True,choices=(('A','A'), ('B','B'), ('C','C'), ('D','D'),('E','E'),('F','F')))
+    equipment_type = models.CharField(_("Equipment Type"), max_length=50,null=True, blank=True,choices=(('A','A'), ('B','B'),  ('D','D'),('H','H')))
     sr_number = models.CharField(_("M/C Sr. No. Alloted by Mfg."), max_length=50,null=True, blank=True)
     model_number = models.CharField(_("M/C Model Number"), max_length=50,null=True, blank=True)
     manufacturer_code = models.ForeignKey(Manufacturer, verbose_name=_("Manufacturer Code"), on_delete=models.CASCADE,null=True, blank=True)
@@ -44,6 +44,8 @@ class Equipment(models.Model):
         verbose_name='po_copy', blank=True, null=True, editable=True)
     
     def scheme_machine_image_tag(self):
+        if not self.machine_image:
+            return ""
         return mark_safe('<img src = "data: image/png; base64, {}" width="200" height="100">'.format(
             b64encode(self.machine_image).decode('utf8')
         ))
@@ -52,6 +54,8 @@ class Equipment(models.Model):
     scheme_machine_image_tag.allow_tags = True
 
     def scheme_po_copy_tag(self):
+        if not self.po_copy:
+            return ""
         return mark_safe('<img src = "data: image/png; base64, {}" width="200" height="100">'.format(
             b64encode(self.po_copy).decode('utf8')
         ))
@@ -69,7 +73,7 @@ class Equipment(models.Model):
         verbose_name_plural = _("Equipments")
 
     def get_absolute_url(self):
-        return reverse("Equipment_detail", kwargs={"pk": self.pk})
+        return reverse("equipment-view")
     
 class EquipmentSpare(models.Model):
     machine_number = models.ForeignKey(Equipment, verbose_name=_("M/C NO."), on_delete=models.CASCADE)
@@ -91,10 +95,10 @@ class EquipmentSpare(models.Model):
         verbose_name_plural = _("EquipmentSpares")
 
     def __str__(self):
-        return self.name
+        return self.id
 
     def get_absolute_url(self):
-        return reverse("EquipmentSpare_detail", kwargs={"pk": self.pk})
+        return reverse("equipment-spares-details", kwargs={"pk": self.pk})
 
 class EquipmentStatics(models.Model):
     machine_number = models.ForeignKey(Equipment, verbose_name=_("Identification Number"), on_delete=models.CASCADE)
@@ -116,7 +120,7 @@ class EquipmentStatics(models.Model):
         verbose_name_plural = _("EquipmentStatics")
 
     def __str__(self):
-        return self.name
+        return self.id
 
     def get_absolute_url(self):
         return reverse("EquipmentStatics_detail", kwargs={"pk": self.pk})

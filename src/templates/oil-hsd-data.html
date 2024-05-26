@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Master{% endblock title %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">OIL Data</h4>
+        {% comment %} <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i> {% endcomment %}
+    </div>
+    <div class="container-main">
+<table id="oil-hsd-list" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>PL No.</th>
+            <th>Machine Number</th>
+            <th>Flag</th>
+            <th>Date</th>
+            <th>Qty Received</th>
+            <th>Qty Issued</th>
+            <th>Meter Reading</th>
+            <th>Unit</th>
+            <th>Remarks</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for eqp in details %}
+        <tr>
+            <td>{{eqp.id}}</td>
+            <td>{{eqp.pl_no}}</td>
+            <td>{{eqp.machine}}</td>
+            <td>{{eqp.flag}}</td>
+            <td>{{eqp.date}}</td>
+            <td>{{eqp.qty_received}}</td>
+            <td>{{eqp.qty_issued}}</td>
+            <td>{{eqp.meter_reading}}</td>
+            <td>{{eqp.unit}}</td>
+            <td>{{eqp.remarks}}</td>
+            <td>Action</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#oil-hsd-list').DataTable();
+} );
+</script>
+{% endblock body %}
+

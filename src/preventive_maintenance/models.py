@@ -58,27 +58,6 @@ class PMScheduleFeedback(models.Model):
     def get_absolute_url(self):
         return reverse("PMScheduleFeedback_detail", kwargs={"pk": self.pk})
 
-class OilMaster(models.Model):
-    pl_no = models.CharField(_("PL No."), max_length=50)
-    machine = models.ForeignKey(Equipment, verbose_name=_("Machine"), on_delete=models.CASCADE)
-    flag = models.CharField(_("Flag"), max_length=50,null=True,blank=True)
-    date = models.DateField(_("date"), auto_now=False, auto_now_add=False)
-    qty_received = models.IntegerField(_("Quantity Received"))
-    qty_issued = models.IntegerField(_("Quantity Issued"))
-    meter_reading = models.DecimalField(_("Meter Read"), max_digits=7, decimal_places=2)
-    unit = models.IntegerField(_("Unit"))
-    remarks = models.TextField(_("Remarks"))    
-
-    class Meta:
-        verbose_name = _("OilMaster")
-        verbose_name_plural = _("OilMasters")
-
-    def __str__(self):
-        return self.id
-
-    def get_absolute_url(self):
-        return reverse("OilMaster_detail", kwargs={"pk": self.pk})
-
 
 class BreakDown(models.Model):
     flag = models.CharField(_("Flag"), max_length=50,choices=(('Y','Y'),('M','M'),('N','N')))

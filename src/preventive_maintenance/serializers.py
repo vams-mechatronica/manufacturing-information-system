@@ -18,11 +18,7 @@ class PMScheduleFeedbackSerializer(serializers.ModelSerializer):
         model = PMScheduleFeedback
         fields = '__all__'
     
-class OilMasterSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = OilMaster
-        fields = '__all__'
 
 class BreakDownSerializer(serializers.ModelSerializer):
 

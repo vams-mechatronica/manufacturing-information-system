@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Master{% endblock title %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">FIR Code</h4>
+        {% comment %} <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i> {% endcomment %}
+    </div>
+    <div class="container-main">
+<table id="fir-list" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fir in firs %}
+        <tr>
+            <td>{{fir.id}}</td>
+            <td>{{fir.number}}</td>
+            <td>{{fir.description}}</td>
+            <td>Action</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#fir-list').DataTable({
+        layout: {
+            topStart: {
+                buttons: [{
+                    extend: 'excelHtml5',
+                    title: 'FIR Code List'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: 'FIR Code List',
+                    orientation: 'portrait',
+                    pageSize: 'A4'
+                }]
+            }
+        }
+    });
+} );
+</script>
+{% endblock body %}
+

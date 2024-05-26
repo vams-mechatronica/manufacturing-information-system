@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
      path('equipment',EquipmentView.as_view()),
-     path('equipment-view',equipments_view,name="equipment-view"),
+     path('equipment-details',equipments_view,name="equipment-view"),
+     path('delete/equipment/<int:id>',delete_equipments_view,name="delete_equipment"),
      path('equipment-spare-parts',EquipmentSpareView.as_view()),
-
+     path('equipment-spares-details',equipmentspares_view,name="equipment-spares-details"),
 ]

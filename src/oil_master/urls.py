@@ -4,7 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-     path('shop',ShopView.as_view()),
-     path('fircode',FIRcodeView.as_view()),
-     path('fir-details',fir_page,name='fir-details'),
+     path('hsd-details',oil_page,name="oil-hsd-details"),
+     path('oil-master',OilMasterView.as_view()),
 ]

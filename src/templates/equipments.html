@@ -25,7 +25,7 @@
             <th>Supplier</th>
             <th>Cost (in Lakhs)</th>
             <th>Date of Commissioning</th>
-            <th>Action</th>
+            {% if request.user.is_superuser %}<th>Action</th>{% endif %}
         </tr>
     </thead>
     <tbody>
@@ -42,7 +42,12 @@
             <td>{{eqp.supplier_code}}</td>
             <td>{{eqp.cost_in_lakhs}}</td>
             <td>{{eqp.date_of_commissioning}}</td>
-            <td>Action</td>
+            {% if request.user.is_superuser %}
+            <td>
+                <a href="/update/{{eqp.id}}" type="button" title="Update"><i class="fa-regular fa-pen-to-square" ></i></a>
+                <a href="/eq/delete/equipment/{{eqp.id}}" type="button" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

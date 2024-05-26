@@ -59,19 +59,7 @@ class PMScheduleFeedbackView(generics.ListCreateAPIView):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
     
-class OilMasterView(generics.ListCreateAPIView):
-    queryset = OilMaster.objects.all()
-    serializer_class = OilMasterSerializer
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
-    filter_backends = [DjangoFilterBackend]
-    pagination_class = LargeResultsSetPagination
 
-    def list(self, request):
-        # Note the use of `get_queryset()` instead of `self.queryset`
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data,status=status.HTTP_200_OK)
 
 class BreakDownView(generics.ListCreateAPIView):
     queryset = BreakDown.objects.all()

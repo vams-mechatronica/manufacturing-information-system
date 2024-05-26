@@ -20,7 +20,7 @@ class Shop(models.Model):
         return reverse("Shop_detail", kwargs={"pk": self.pk})
 
 class FIRcode(models.Model):
-    fir_code_number = models.IntegerField(_("FIR Code number"),primary_key=True)
+    number = models.IntegerField(_("FIR Code number"),primary_key=True)
     description = models.CharField(_("Description"), max_length=350)
 
     class Meta:

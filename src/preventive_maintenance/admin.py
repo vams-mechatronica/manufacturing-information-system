@@ -14,10 +14,7 @@ class PMScheduleAdmin(admin.ModelAdmin):
 class PMScheduleFeedbackAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(OilMaster)
-class OilMasterAdmin(admin.ModelAdmin):
-    pass
-    
+
 
     
 

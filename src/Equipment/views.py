@@ -7,9 +7,10 @@ from rest_framework.views import APIView
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from django.http import JsonResponse
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import LargeResultsSetPagination
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 class EquipmentView(generics.ListCreateAPIView):
@@ -42,3 +43,14 @@ def equipments_view(request):
     equipments = Equipment.objects.all()
     context = {'equipments':equipments}
     return render(request, 'equipments.html', context)
+
+
+def equipmentspares_view(request):
+    spares = EquipmentSpare.objects.all()
+    context = {'spares':spares}
+    return render(request, 'equipments-spares.html', context)
+
+def delete_equipments_view(request,id):
+    equipment = get_object_or_404(Equipment, id=id) 
+    equipment.delete()
+    return redirect('equipment-view')
