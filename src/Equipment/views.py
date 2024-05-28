@@ -56,7 +56,7 @@ def delete_equipments_view(request,id):
     return redirect('equipment-view')
 
 from .forms import EquipmentForm
-
+import base64
 def add_record(request):
     if request.method == 'POST':
         form = EquipmentForm(request.POST, request.FILES)

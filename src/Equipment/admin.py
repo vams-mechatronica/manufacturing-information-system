@@ -25,8 +25,7 @@ class ItemForm(forms.ModelForm):
 
 
 class EquipmentAdmin(admin.ModelAdmin):
-    form = ItemForm
-    list_display = ('number', 'scheme_machine_image_tag','scheme_po_copy_tag')
+    list_display = ('number', 'machine_image','po_copy')
 
 admin.site.register(Equipment,EquipmentAdmin)
 admin.site.register(EquipmentSpare)

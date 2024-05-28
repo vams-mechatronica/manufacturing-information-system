@@ -39,6 +39,7 @@
     <thead>
         <tr>
             <th>Sl</th>
+            <th>Machine Image</th>
             <th>Type</th>
             <th>Equipment No.</th>
             <th>Description</th>
@@ -55,14 +56,21 @@
     <tbody>
         {% for eqp in equipments %}
         <tr>
-            <td>{{eqp.id}}</td>
+            <td>{{forloop.counter}}</td>
+            <td>
+                {% if eqp.machine_image %}
+                    <img src="{{ eqp.machine_image.url }}" alt="Machine Image" width="100px" height="100px" style="object-fit: scale-down;" />
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
             <td>{{eqp.equipment_type}}</td>
             <td>{{eqp.number}}</td>
             <td>{{eqp.description}}</td>
             <td>{{eqp.short_name}}</td>
             <td>{{eqp.shop_number}}</td>
             <td>{{eqp.po_number}}</td>
-            <td>{{eqp.po_date}}</td>
+            <td>{{eqp.po_date}}</td> 
             <td>{{eqp.supplier_code}}</td>
             <td>{{eqp.cost_in_lakhs}}</td>
             <td>{{eqp.date_of_commissioning}}</td>

@@ -39,9 +39,9 @@ class Equipment(models.Model):
     recovery_value_warranty = models.CharField(_("Recovery Value in Warranty Period"), max_length=50,null=True, blank=True)
     percentage_avalability_in_warranty = models.CharField(_("%age Availability in Warranty Period"), max_length=50,null=True, blank=True)
     specification = models.TextField(_("Specifications"),max_length=5000,null=True, blank=True)
-    machine_image = models.BinaryField(_("machine_image"), blank=True, null=True, editable=True)
-    po_copy = models.BinaryField(
-        verbose_name='po_copy', blank=True, null=True, editable=True)
+    machine_image = models.FileField(_("machine_image"),upload_to="Equipments", blank=True, null=True)
+    po_copy = models.FileField(upload_to="Equipments",
+        verbose_name='po_copy', blank=True, null=True)
     
     def scheme_machine_image_tag(self):
         if not self.machine_image:
