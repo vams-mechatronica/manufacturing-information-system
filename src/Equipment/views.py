@@ -42,7 +42,7 @@ class EquipmentSpareView(generics.ListCreateAPIView):
 def equipments_view(request):
     equipments = Equipment.objects.all()
     context = {'equipments':equipments}
-    return render(request, 'equipments.html', context)
+    return render(request, 'equipments/equipments.html', context)
 
 
 def equipmentspares_view(request):
@@ -65,4 +65,16 @@ def add_record(request):
             return redirect('equipment-view')  # Replace with your success URL or view name
     else:
         form = EquipmentForm()
-    return render(request, 'add-equipment.html', {'form': form})
+    return render(request, 'equipments/add-equipment.html', {'form': form})
+
+
+def edit_equipment(request, pk):
+    equipment = get_object_or_404(Equipment, pk=pk)
+    if request.method == 'POST':
+        form = EquipmentForm(request.POST, request.FILES, instance=equipment)
+        if form.is_valid():
+            form.save()
+            return redirect('equipment-view')  # Replace with your success URL or view name
+    else:
+        form = EquipmentForm(instance=equipment)
+    return render(request, 'equipments/edit-equipment.html', {'form': form})

@@ -15,6 +15,9 @@
             <a class="h2 my-2" href="{% url "equipment-view" %}" style="text-decoration:none;">Equipment (View & Edit)</a>
         </div>
         <div class="box" id="box-2" style="margin-bottom: 8px;">
+            <a class="h2 my-2" href="{% url "suppliers-view" %}" style="text-decoration:none;">Suppliers (View & Edit)</a>
+        </div>
+        <div class="box" id="box-2" style="margin-bottom: 8px;">
             <a class="h2 my-2" href="{% url "fir-details" %}" style="text-decoration:none;">{% if request.user.is_superuser %}FIR Code (View & Edit){% else %}FIR Code{% endif %}</a>
         </div>
         <div class="box" id="box-3" style="margin-bottom: 8px;">

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Suppliers {% endblock title %}
+{% block head %}
+<style>
+    .form-label {
+        text-align: right;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock head %}
+{% block body %}
+<div class="container-common">
+    <div class="title">
+        <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">Suppliers - Edit</h4>
+    </div>
+    <div class="container mt-5">
+        {{form.media}}
+        {% comment %} <form method="post" enctype="multipart/form-data"> {% endcomment %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.supplier_code.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.supplier_code }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.mfg_supplier_name.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.mfg_supplier_name }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.mfg_supplier_short_name.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.mfg_supplier_short_name }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.address.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.address }}
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Second Column -->
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.mobile_number.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.mobile_number }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.country.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.country }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.telephone.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.telephone }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.fax_number.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.fax_number }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.email_id.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.email_id }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label form-label">{{ form.contact_person.label_tag }}</label>
+                        <div class="col-sm-8">
+                            {{ form.contact_person }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+
+{% endblock body %}

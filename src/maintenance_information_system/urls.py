@@ -38,7 +38,7 @@ schema_view = get_schema_view(
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('master/',include('Suppliers.urls')),
+    path('suppliers/',include('Suppliers.urls')),
     path('master/',include('Shop.urls')),
     path('main/',include('home.urls')),
     path('oil/',include('oil_master.urls')),
