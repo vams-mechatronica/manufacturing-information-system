@@ -23,18 +23,14 @@
         <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">Equipment</h4>
         {% comment %} <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i> {% endcomment %}
     </div>
+    {% if request.user.is_superuser %}
     <div class="container-main">
         <div class="button-container">
         <a href="{% url "add-equipment" %}" class="btn btn-primary" title="Add New Record">
             <i class="fas fa-plus"></i> Add New Record
         </a>
-        {% comment %} <button onclick="location.href='#'" class="btn btn-success" title="Export to Excel">
-            <i class="fas fa-file-excel"></i>
-        </button>
-        <button onclick="location.href='#'" class="btn btn-danger" title="Export to PDF">
-            <i class="fas fa-file-pdf"></i>
-        </button> {% endcomment %}
     </div>
+    {% endif %}
 <table id="equipment-list" class="table table-striped" style="width:100%">
     <thead>
         <tr>
