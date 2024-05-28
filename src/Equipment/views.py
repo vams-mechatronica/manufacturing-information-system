@@ -54,3 +54,15 @@ def delete_equipments_view(request,id):
     equipment = get_object_or_404(Equipment, id=id) 
     equipment.delete()
     return redirect('equipment-view')
+
+from .forms import EquipmentForm
+
+def add_record(request):
+    if request.method == 'POST':
+        form = EquipmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('equipment-view')  # Replace with your success URL or view name
+    else:
+        form = EquipmentForm()
+    return render(request, 'add-equipment.html', {'form': form})

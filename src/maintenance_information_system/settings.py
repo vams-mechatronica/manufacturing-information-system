@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'home',
     'oil_master',
+    "django_bootstrap5",
+    "bootstrap_datepicker_plus",
+    'crispy_forms',
     
 ]
 
