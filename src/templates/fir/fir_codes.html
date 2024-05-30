@@ -2,55 +2,67 @@
 {% load static %}
 {% block title %}Master{% endblock title %}
 {% block head %}
-{% comment %} <link rel="stylesheet" href="{% static "assets/css/home.css" %}"> {% endcomment %}
+{% comment %}
+<link rel="stylesheet" href="{% static " assets/css/home.css" %}"> {% endcomment %}
 {% endblock head %}
 {% block body %}
 <div class="container-common">
     <div class="title">
         <h4 class="h4 fw-bold" style="color: black; width: 90%; margin: 1rem 0;">FIR Code</h4>
-        {% comment %} <i class="fa-solid fa-gear fa-sm" style="color:rgb(105, 105, 105);padding: 1.5rem 0rem 0rem 5.5rem;"></i> {% endcomment %}
     </div>
+    {% if request.user.is_superuser %}
     <div class="container-main">
-<table id="fir-list" class="table table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th>Sl</th>
-            <th>Code</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for fir in firs %}
-        <tr>
-            <td>{{fir.id}}</td>
-            <td>{{fir.number}}</td>
-            <td>{{fir.description}}</td>
-            <td>Action</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-</div>
-<script>
-    $(document).ready( function () {
-    $('#fir-list').DataTable({
-        layout: {
-            topStart: {
-                buttons: [{
-                    extend: 'excelHtml5',
-                    title: 'FIR Code List'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    title: 'FIR Code List',
-                    orientation: 'portrait',
-                    pageSize: 'A4'
-                }]
-            }
-        }
-    });
-} );
-</script>
-{% endblock body %}
-
+        <div class="button-container">
+        <a href="{% url "add-fir" %}" class="btn btn-primary" title="Add New Record">
+            <i class="fas fa-plus"></i> Add New Record
+        </a>
+    </div>
+    {% endif %}
+    <div class="container-main">
+        <table id="fir-list" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Sl</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    {% if request.user.is_superuser %}<th>Action</th>{% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for fir in firs %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{fir.number}}</td>
+                    <td>{{fir.description}}</td>
+                    {% if request.user.is_superuser %}
+                    <td>
+                        <a href="/master/fir/update/{{fir.id}}" type="button" title="Update"><i class="fa-regular fa-pen-to-square" ></i></a>
+                        <a href="/master/fir/delete/{{fir.id}}" type="button" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#fir-list').DataTable({
+                layout: {
+                    topStart: {
+                        buttons: [{
+                            extend: 'excelHtml5',
+                            title: 'FIR Code List'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            title: 'FIR Code List',
+                            orientation: 'portrait',
+                            pageSize: 'A4'
+                        }]
+                    }
+                }
+            });
+        });
+    </script>
+    {% endblock body %}

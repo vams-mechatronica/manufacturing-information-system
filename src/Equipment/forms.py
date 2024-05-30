@@ -21,3 +21,17 @@ class EquipmentForm(forms.ModelForm):
         # Update widgets for file fields
         self.fields['machine_image'].widget = forms.ClearableFileInput(attrs={'class': 'form-control'})
         self.fields['po_copy'].widget = forms.ClearableFileInput(attrs={'class': 'form-control'})
+
+
+class EquipmentSparesForm(forms.ModelForm):
+    class Meta:
+        model = EquipmentSpare
+        fields = '__all__'
+        
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+        
+        

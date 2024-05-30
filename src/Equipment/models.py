@@ -65,7 +65,7 @@ class Equipment(models.Model):
 
 
     def __str__(self) -> str:
-        return super().__str__()
+        return "Machine: %s" % self.number
 
 
     class Meta:

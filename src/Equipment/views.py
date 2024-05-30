@@ -10,6 +10,8 @@ from django.http import Http404
 from django.shortcuts import render,redirect
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import LargeResultsSetPagination
+from .forms import *
+import base64
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -48,15 +50,25 @@ def equipments_view(request):
 def equipmentspares_view(request):
     spares = EquipmentSpare.objects.all()
     context = {'spares':spares}
-    return render(request, 'equipments-spares.html', context)
+    return render(request, 'equipments-spares/equipments-spares.html', context)
+
+def add_equipmentspares(request):
+    if request.method == 'POST':
+        form = EquipmentSparesForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('equipment-spares-details')  # Replace with your success URL or view name
+    else:
+        form = EquipmentSparesForm()
+    return render(request, 'equipments-spares/add-equipments-spares.html', {'form': form})
+    # return render(request, 'equipments-spares.html', context)
 
 def delete_equipments_view(request,id):
     equipment = get_object_or_404(Equipment, id=id) 
     equipment.delete()
     return redirect('equipment-view')
 
-from .forms import EquipmentForm
-import base64
+
 def add_record(request):
     if request.method == 'POST':
         form = EquipmentForm(request.POST, request.FILES)
