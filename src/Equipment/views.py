@@ -90,3 +90,12 @@ def edit_equipment(request, pk):
     else:
         form = EquipmentForm(instance=equipment)
     return render(request, 'equipments/edit-equipment.html', {'form': form})
+
+
+class EquipmentStatusAPI(generics.ListCreateAPIView):
+    queryset = MachineStatus.objects.all()
+    serializer_class = MachineStatusSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication, SessionAuthentication)
+    filter_backends = [DjangoFilterBackend]
+    pagination_class = LargeResultsSetPagination

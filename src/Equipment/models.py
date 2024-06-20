@@ -124,3 +124,23 @@ class EquipmentStatics(models.Model):
 
     def get_absolute_url(self):
         return reverse("EquipmentStatics_detail", kwargs={"pk": self.pk})
+
+class MachineStatus(models.Model):
+    machine_id = models.CharField(_("machine_id"), max_length=500,null=True,blank=True)
+    device_id = models.CharField(_("device_id"), max_length=500,null=True,blank=True)
+    temperature = models.CharField(_("temperature"), max_length=500,null=True,blank=True) 
+    status = models.CharField(_("status"), max_length=500,null=True,blank=True)
+    pressure = models.CharField(_("pressure"), max_length=500,null=True,blank=True)
+    voltage = models.CharField(_("voltage"), max_length=500,null=True,blank=True)
+    vibration = models.CharField(_("vibrations"), max_length=500,null=True,blank=True)
+
+    class Meta:
+        verbose_name = _("MachineStatus")
+        verbose_name_plural = _("MachineStatuss")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("MachineStatus_detail", kwargs={"pk": self.pk})
+

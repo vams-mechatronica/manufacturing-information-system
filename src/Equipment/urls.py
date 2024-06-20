@@ -12,4 +12,5 @@ urlpatterns = [
      path('equipment-spare-parts',EquipmentSpareView.as_view()),
      path('equipment-spares-details',equipmentspares_view,name="equipment-spares-details"),
      path('equipment-spares/add/',add_equipmentspares,name="add-equipment-spares"),
+     path('equipment-status',EquipmentStatusAPI.as_view()),
 ]
